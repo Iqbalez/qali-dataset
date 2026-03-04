@@ -1,7 +1,6 @@
 import { createPageMetadata } from "@/src/lib/seo";
 import { CTA } from "@/src/components/sections/cta";
 import { CaseStudiesPreview } from "@/src/components/sections/case-studies-preview";
-import { DatasetCatalog } from "@/src/components/sections/dataset-catalog";
 import { Hero } from "@/src/components/sections/hero";
 import { Languages } from "@/src/components/sections/languages";
 import { Metrics } from "@/src/components/sections/metrics";
@@ -25,7 +24,6 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <Solutions />
-      <DatasetCatalog />
       <Languages />
       <WhyUs />
       <Workflow />
