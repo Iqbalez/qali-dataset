@@ -48,7 +48,7 @@ export async function POST(request: Request) {
 
     const { error } = await resend.emails.send({
       from: "Qali <onboarding@resend.dev>",
-      to: "contact@qali.et",
+      to: "iqbalezedin1@gmail.com",
       replyTo: email,
       subject: `Contact from ${name} (${company})`,
       html: `

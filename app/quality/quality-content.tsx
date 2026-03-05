@@ -45,6 +45,20 @@ const complianceItems = [
   { icon: FileCheck, title: "Format compliance", description: "Standard formats (COCO, Parquet, JSONL) with full schema documentation." },
 ];
 
+function TimelineCard({ item }: { item: (typeof processSteps)[number] }) {
+  return (
+    <div className="glass-card p-5">
+      <div className="flex items-center gap-3">
+        <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/20">
+          <item.icon className="size-5 text-primary" />
+        </div>
+        <h4 className="font-display font-semibold text-white">{item.title}</h4>
+      </div>
+      <p className="mt-2 text-sm text-[#9CA3AF]">{item.description}</p>
+    </div>
+  );
+}
+
 export function QualityContent() {
   return (
     <>
@@ -59,48 +73,68 @@ export function QualityContent() {
             <h3 className="mb-8 text-center text-xl font-semibold text-white">
               Process timeline
             </h3>
-            <div className="relative">
-              <div
-                className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/30 to-transparent md:left-1/2 md:-translate-x-px"
-                aria-hidden
-              />
-              <div className="space-y-8">
-                {processSteps.map((item, index) => (
-                  <div
-                    key={item.title}
-                    className="relative flex flex-col gap-4 md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-8"
-                  >
-                    <div className={index % 2 === 1 ? "hidden md:block" : "md:pr-8"}>
-                      {index % 2 === 0 && (
-                        <div className="glass-card p-5 md:ml-auto md:max-w-md md:text-right">
-                          <div className="flex items-center gap-3 md:flex-row-reverse md:justify-end">
-                            <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/20">
-                              <item.icon className="size-5 text-primary" />
+
+            {/* Mobile: vertical timeline */}
+            <div className="md:hidden">
+              <div className="relative pl-10">
+                <div
+                  className="absolute left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/30 to-transparent"
+                  aria-hidden
+                />
+                <div className="space-y-6">
+                  {processSteps.map((item) => (
+                    <div key={item.title} className="relative">
+                      <div className="absolute -left-10 flex size-10 items-center justify-center rounded-full border-2 border-primary bg-[#0B0F19]">
+                        <span className="font-mono text-sm font-semibold text-primary">{item.step}</span>
+                      </div>
+                      <TimelineCard item={item} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop: alternating timeline */}
+            <div className="hidden md:block">
+              <div className="relative">
+                <div
+                  className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-px bg-gradient-to-b from-primary/50 via-primary/30 to-transparent"
+                  aria-hidden
+                />
+                <div className="space-y-8">
+                  {processSteps.map((item, index) => (
+                    <div
+                      key={item.title}
+                      className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-8"
+                    >
+                      <div className={index % 2 === 0 ? "pr-8" : ""}>
+                        {index % 2 === 0 && (
+                          <div className="ml-auto max-w-md text-right">
+                            <div className="glass-card p-5">
+                              <div className="flex items-center justify-end gap-3">
+                                <h4 className="font-display font-semibold text-white">{item.title}</h4>
+                                <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/20">
+                                  <item.icon className="size-5 text-primary" />
+                                </div>
+                              </div>
+                              <p className="mt-2 text-sm text-[#9CA3AF]">{item.description}</p>
                             </div>
-                            <h4 className="font-display font-semibold text-white">{item.title}</h4>
                           </div>
-                          <p className="mt-2 text-sm text-[#9CA3AF]">{item.description}</p>
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex size-12 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-[#0B0F19] md:size-14">
-                      <span className="font-mono font-semibold text-primary">{item.step}</span>
-                    </div>
-                    <div className={index % 2 === 0 ? "hidden md:block" : "md:pl-8"}>
-                      {index % 2 === 1 && (
-                        <div className="glass-card p-5 md:mr-auto md:max-w-md">
-                          <div className="flex items-center gap-3">
-                            <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/20">
-                              <item.icon className="size-5 text-primary" />
-                            </div>
-                            <h4 className="font-display font-semibold text-white">{item.title}</h4>
+                        )}
+                      </div>
+                      <div className="flex size-14 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-[#0B0F19]">
+                        <span className="font-mono font-semibold text-primary">{item.step}</span>
+                      </div>
+                      <div className={index % 2 === 1 ? "pl-8" : ""}>
+                        {index % 2 === 1 && (
+                          <div className="mr-auto max-w-md">
+                            <TimelineCard item={item} />
                           </div>
-                          <p className="mt-2 text-sm text-[#9CA3AF]">{item.description}</p>
-                        </div>
-                      )}
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </FadeIn>

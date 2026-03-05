@@ -54,7 +54,7 @@ const languageDetails = [
   {
     name: "Harari",
     script: "Arabic / Latin",
-    speakers: "~25,000",
+    speakers: "~100,000",
     dialectRegions: ["Harar city and surroundings"],
     phonemeChallenges: "Shared Semitic features with Amharic, unique lexical borrowings from Oromo and Arabic",
     nlpChallenges: "Extremely low-resource, no standard digital orthography, endangered language status",

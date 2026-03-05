@@ -1,13 +1,24 @@
 "use client";
 
+import { useState } from "react";
 import { Mic2, ImagePlus, FileText } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import { LanguageCard } from "@/src/components/cards/language-card";
 import { FadeIn } from "@/src/components/animations/fade-in";
 import { Section } from "@/src/components/sections/section";
 import { cn } from "@/lib/utils";
 
 const languages = [
+  {
+    name: "Harari",
+    speakerCount: "Low-resource",
+    datasetTypes: ["ASR", "TTS", "NLP"],
+    hours: "40+",
+    modalities: ["Speech", "Text"],
+    dialectCoverage: "Harar",
+    lowResource: true,
+  },
   {
     name: "Amharic",
     speakerCount: "120M",
@@ -44,16 +55,9 @@ const languages = [
     dialectCoverage: "Eritrean, Ethiopian",
     lowResource: false,
   },
-  {
-    name: "Harari",
-    speakerCount: "Low-resource",
-    datasetTypes: ["ASR", "TTS", "NLP"],
-    hours: "40+",
-    modalities: ["Speech", "Text"],
-    dialectCoverage: "Harar",
-    lowResource: true,
-  },
 ];
+
+const INITIAL_COUNT = 3;
 
 const modalityIcons = {
   Speech: Mic2,
@@ -62,6 +66,11 @@ const modalityIcons = {
 };
 
 export function Languages() {
+  const [showAll, setShowAll] = useState(false);
+
+  const visible = showAll ? languages : languages.slice(0, INITIAL_COUNT);
+  const hiddenCount = languages.length - INITIAL_COUNT;
+
   return (
     <Section
       id="languages"
@@ -71,12 +80,24 @@ export function Languages() {
       className={cn("relative overflow-hidden", "map-pattern bg-[#111827]")}
     >
       <div className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {languages.map((language) => (
+        {visible.map((language) => (
           <FadeIn key={language.name}>
             <LanguageCard {...language} modalityIcons={modalityIcons} />
           </FadeIn>
         ))}
       </div>
+
+      {!showAll && hiddenCount > 0 && (
+        <div className="mt-8 flex justify-center">
+          <Button
+            variant="outline"
+            onClick={() => setShowAll(true)}
+            className="border-[#374151] text-[#D1D5DB] hover:bg-[#1E293B] hover:text-white"
+          >
+            See {hiddenCount} more language{hiddenCount !== 1 ? "s" : ""}
+          </Button>
+        </div>
+      )}
     </Section>
   );
 }

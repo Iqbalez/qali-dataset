@@ -1,6 +1,7 @@
-import { Calendar, FileCheck, Shield, Lock } from "lucide-react";
+import { FileCheck, Shield, Lock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ContactForm } from "@/src/components/forms/contact-form";
+import { CalendlyEmbed } from "@/src/components/calendly-embed";
 import { createPageMetadata } from "@/src/lib/seo";
 import { Section } from "@/src/components/sections/section";
 
@@ -10,6 +11,8 @@ export const metadata = createPageMetadata({
 });
 
 export default function ContactPage() {
+  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL;
+
   return (
     <Section
       eyebrow="CONTACT"
@@ -42,15 +45,7 @@ export default function ContactPage() {
 
         <div>
           <h2 className="mb-6 text-xl font-semibold text-white">Schedule a call</h2>
-          <div className="glass-card flex min-h-[400px] flex-col items-center justify-center gap-4 p-8">
-            <Calendar className="size-12 text-[#9CA3AF]" />
-            <p className="text-center text-sm font-medium text-[#D1D5DB]">
-              Calendar integration coming soon
-            </p>
-            <p className="text-center text-xs text-[#9CA3AF]">
-              In the meantime, send us a message and we&apos;ll schedule a call within 24 hours.
-            </p>
-          </div>
+          <CalendlyEmbed url={calendlyUrl} />
 
           <div className="mt-8 space-y-4">
             <h3 className="text-lg font-semibold text-white">Direct contact</h3>
