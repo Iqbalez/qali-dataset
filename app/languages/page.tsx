@@ -14,9 +14,9 @@ const languageDetails = [
     dialectRegions: ["Addis Ababa (standard)", "Gojjam", "Gondar", "Wollo", "Shewa"],
     phonemeChallenges: "Ejective consonants, gemination, vowel-length distinctions",
     nlpChallenges: "Complex morphology (agglutinative), no standard word segmentation, Ge'ez script OCR difficulty",
-    datasets: ["ASR (120h)", "TTS (multi-speaker)", "RLHF (50M tokens)", "Document OCR (8K images)", "Retail Vision (15K images)"],
+    datasets: ["ASR (120h)", "TTS (in development)", "RLHF (5M tokens, scaling)", "Document OCR (2K images, scaling)", "Retail Vision (5K images, scaling)"],
     modalities: ["Speech", "Text", "Vision"],
-    totalHours: "200+",
+    totalHours: "120h collected",
   },
   {
     name: "Oromifa",
@@ -27,7 +27,7 @@ const languageDetails = [
     nlpChallenges: "Limited digital resources, dialect variation in orthography, code-switching with Amharic",
     datasets: ["TTS (85h, multi-speaker)", "ASR (in development)"],
     modalities: ["Speech", "Text"],
-    totalHours: "85+",
+    totalHours: "85h collected",
   },
   {
     name: "Tigrinya",
@@ -38,7 +38,7 @@ const languageDetails = [
     nlpChallenges: "Cross-border dialect variation, limited NLP tooling, Ge'ez script shared with Amharic",
     datasets: ["ASR (45h)"],
     modalities: ["Speech"],
-    totalHours: "45+",
+    totalHours: "45h collected",
   },
   {
     name: "Somali",
@@ -49,7 +49,7 @@ const languageDetails = [
     nlpChallenges: "Dialect variation between Northern and Benaadir, limited annotated corpora",
     datasets: ["ASR (60h)", "NLP corpora"],
     modalities: ["Speech", "Text"],
-    totalHours: "60+",
+    totalHours: "60h collected",
   },
   {
     name: "Harari",
@@ -60,7 +60,7 @@ const languageDetails = [
     nlpChallenges: "Extremely low-resource, no standard digital orthography, endangered language status",
     datasets: ["Conversational ASR (40h)", "TTS", "NLP"],
     modalities: ["Speech", "Text"],
-    totalHours: "40+",
+    totalHours: "40h collected",
   },
 ];
 

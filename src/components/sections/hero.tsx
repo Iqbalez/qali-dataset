@@ -17,9 +17,9 @@ const trustBadges = [
 ];
 
 const previewCards = [
-  { label: "Amharic ASR", hours: "120h", modality: "Speech", qaScore: "98.7%" },
-  { label: "Harari Speech", hours: "40h", modality: "Speech", qaScore: "97.2%" },
-  { label: "Oromifa TTS", hours: "85h", modality: "Speech", qaScore: "99.1%" },
+  { label: "Amharic ASR", detail: "120h corpus", modality: "Speech", badge: "Available" },
+  { label: "Harari Speech", detail: "40h conversational", modality: "Speech", badge: "Available" },
+  { label: "Oromifa TTS", detail: "85h multi-speaker", modality: "Speech", badge: "Available" },
 ];
 
 const fadeIn = {
@@ -118,16 +118,11 @@ export function Hero() {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="font-medium text-white">{card.label}</p>
-                        <p className="mt-1 text-sm text-[#9CA3AF]">{card.modality}</p>
+                        <p className="mt-1 text-sm text-[#9CA3AF]">{card.modality} · {card.detail}</p>
                       </div>
-                      <div className="flex items-center gap-3">
-                        <Badge variant="secondary" className="font-mono text-xs tabular-nums">
-                          {card.hours}
-                        </Badge>
-                        <span className="font-mono text-xs tabular-nums text-primary">
-                          {card.qaScore}
-                        </span>
-                      </div>
+                      <Badge variant="secondary" className="text-xs">
+                        {card.badge}
+                      </Badge>
                     </div>
                   </div>
                 </motion.div>

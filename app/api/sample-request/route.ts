@@ -7,7 +7,9 @@ const sampleRequestSchema = z.object({
   email: z.string().email("Invalid email address"),
   company: z.string().min(1, "Company is required"),
   useCase: z.string().min(1, "Use case is required"),
+  intendedUse: z.string().optional(),
   datasetType: z.string().optional(),
+  preferredFormat: z.string().optional(),
   languagesNeeded: z.string().optional(),
   timeline: z.string().optional(),
   message: z.string().optional(),
@@ -29,7 +31,9 @@ export async function POST(request: Request) {
       email,
       company,
       useCase,
+      intendedUse,
       datasetType,
+      preferredFormat,
       languagesNeeded,
       timeline,
       message,
@@ -56,7 +60,9 @@ export async function POST(request: Request) {
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Company:</strong> ${company}</p>
         <p><strong>Use case:</strong> ${useCase}</p>
+        ${intendedUse ? `<p><strong>Intended use:</strong> ${intendedUse}</p>` : ""}
         ${datasetType ? `<p><strong>Dataset type:</strong> ${datasetType}</p>` : ""}
+        ${preferredFormat ? `<p><strong>Preferred format:</strong> ${preferredFormat}</p>` : ""}
         ${languagesNeeded ? `<p><strong>Languages needed:</strong> ${languagesNeeded}</p>` : ""}
         ${timeline ? `<p><strong>Timeline:</strong> ${timeline}</p>` : ""}
         ${message ? `<p><strong>Message:</strong></p><p>${String(message).replace(/\n/g, "<br>")}</p>` : ""}

@@ -31,7 +31,9 @@ const sampleRequestSchema = z.object({
   companyEmail: z.string().min(1, "Email is required").email("Invalid email address"),
   company: z.string().min(1, "Company is required"),
   useCase: z.string().min(1, "Use case is required"),
+  intendedUse: z.string().min(1, "Intended use is required"),
   datasetType: z.string().optional(),
+  preferredFormat: z.string().optional(),
   languagesNeeded: z.string().optional(),
   timeline: z.string().optional(),
   message: z.string().optional(),
@@ -52,7 +54,28 @@ const useCaseOptions = [
 
 const datasetTypeOptions = ["Speech", "Text", "Vision", "Multimodal", "RLHF", "Custom"];
 
+const formatOptions = [
+  "JSON",
+  "JSONL",
+  "CSV",
+  "Parquet",
+  "COCO JSON",
+  "WAV + TextGrid",
+  "WAV + JSON",
+  "No preference",
+];
+
+const intendedUseOptions = [
+  "Internal evaluation / benchmarking",
+  "Model training (research)",
+  "Model training (commercial product)",
+  "Proof of concept / demo",
+  "Academic research",
+  "Other",
+];
+
 const selectClasses = "w-full rounded-lg border border-[#374151] bg-[#0F172A] px-3 py-2 text-sm text-[#E5E7EB] focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary";
+const inputClasses = "border-[#374151] bg-[#0F172A] text-[#E5E7EB] placeholder:text-[#6B7280]";
 
 export function SampleRequestForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -65,7 +88,9 @@ export function SampleRequestForm() {
       companyEmail: "",
       company: "",
       useCase: "",
+      intendedUse: "",
       datasetType: "",
+      preferredFormat: "",
       languagesNeeded: "",
       timeline: "",
       message: "",
@@ -83,7 +108,9 @@ export function SampleRequestForm() {
           email: data.companyEmail,
           company: data.company,
           useCase: data.useCase,
+          intendedUse: data.intendedUse,
           datasetType: data.datasetType,
+          preferredFormat: data.preferredFormat,
           languagesNeeded: data.languagesNeeded,
           timeline: data.timeline,
           message: data.message,
@@ -168,7 +195,7 @@ export function SampleRequestForm() {
                 <FormItem>
                   <FormLabel className="text-[#E5E7EB]">Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your name" className="border-[#374151] bg-[#0F172A] text-[#E5E7EB] placeholder:text-[#6B7280]" {...field} />
+                    <Input placeholder="Your name" className={inputClasses} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -181,7 +208,7 @@ export function SampleRequestForm() {
                 <FormItem>
                   <FormLabel className="text-[#E5E7EB]">Company Email</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="you@company.com" className="border-[#374151] bg-[#0F172A] text-[#E5E7EB] placeholder:text-[#6B7280]" {...field} />
+                    <Input type="email" placeholder="you@company.com" className={inputClasses} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -194,7 +221,7 @@ export function SampleRequestForm() {
                 <FormItem>
                   <FormLabel className="text-[#E5E7EB]">Company</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your company" className="border-[#374151] bg-[#0F172A] text-[#E5E7EB] placeholder:text-[#6B7280]" {...field} />
+                    <Input placeholder="Your company" className={inputClasses} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -210,6 +237,24 @@ export function SampleRequestForm() {
                     <select {...field} className={selectClasses}>
                       <option value="">Select use case</option>
                       {useCaseOptions.map((opt) => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="intendedUse"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#E5E7EB]">Intended use for sample</FormLabel>
+                  <FormControl>
+                    <select {...field} className={selectClasses}>
+                      <option value="">How will you use this sample?</option>
+                      {intendedUseOptions.map((opt) => (
                         <option key={opt} value={opt}>{opt}</option>
                       ))}
                     </select>
@@ -238,12 +283,30 @@ export function SampleRequestForm() {
             />
             <FormField
               control={form.control}
+              name="preferredFormat"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#E5E7EB]">Preferred file format</FormLabel>
+                  <FormControl>
+                    <select {...field} className={selectClasses}>
+                      <option value="">Select format</option>
+                      {formatOptions.map((opt) => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name="languagesNeeded"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-[#E5E7EB]">Languages needed</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. Amharic, Oromifa" className="border-[#374151] bg-[#0F172A] text-[#E5E7EB] placeholder:text-[#6B7280]" {...field} />
+                    <Input placeholder="e.g. Amharic, Oromifa" className={inputClasses} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -256,7 +319,7 @@ export function SampleRequestForm() {
                 <FormItem>
                   <FormLabel className="text-[#E5E7EB]">Timeline</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. 4 weeks" className="border-[#374151] bg-[#0F172A] text-[#E5E7EB] placeholder:text-[#6B7280]" {...field} />
+                    <Input placeholder="e.g. 4 weeks" className={inputClasses} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -271,7 +334,7 @@ export function SampleRequestForm() {
                   <FormControl>
                     <Textarea
                       placeholder="Additional details..."
-                      className="min-h-24 resize-none border-[#374151] bg-[#0F172A] text-[#E5E7EB] placeholder:text-[#6B7280]"
+                      className={`min-h-24 resize-none ${inputClasses}`}
                       {...field}
                     />
                   </FormControl>

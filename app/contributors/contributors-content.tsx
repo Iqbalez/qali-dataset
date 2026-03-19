@@ -33,9 +33,9 @@ const enterpriseBenefits = [
 ];
 
 const stats = [
-  { value: "150+", label: "Active annotators" },
   { value: "5", label: "Languages covered" },
-  { value: "500+", label: "Daily tasks processed" },
+  { value: "3-tier", label: "Certification system" },
+  { value: "Scaling", label: "Annotator network growing" },
 ];
 
 const trainingProcess = [

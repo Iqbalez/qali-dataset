@@ -48,7 +48,7 @@ export function LanguageCard({
 
       <div className="mt-4 flex-1 space-y-4">
         {hours && (
-          <p className="font-mono text-sm tabular-nums text-[#D1D5DB]">{hours} hours collected</p>
+          <p className="font-mono text-sm tabular-nums text-[#D1D5DB]">{hours}</p>
         )}
         {modalities && modalities.length > 0 && (
           <div className="flex flex-wrap gap-2">
