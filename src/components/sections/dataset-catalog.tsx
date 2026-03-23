@@ -59,8 +59,8 @@ export function DatasetCatalog() {
     <Section
       id="catalog"
       eyebrow="DATASET CATALOG"
-      title="Available Datasets"
-      description="Production-ready African language datasets for AI training."
+      title="What We Can Build for You"
+      description="On-demand African language datasets. Each project is scoped, collected, and delivered to your specifications."
     >
       <div className="space-y-8">
         <FadeIn>

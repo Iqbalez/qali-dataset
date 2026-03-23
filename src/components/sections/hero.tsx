@@ -17,9 +17,9 @@ const trustBadges = [
 ];
 
 const previewCards = [
-  { label: "Amharic ASR", detail: "120h corpus", modality: "Speech", badge: "Available" },
-  { label: "Harari Speech", detail: "40h conversational", modality: "Speech", badge: "Available" },
-  { label: "Oromifa TTS", detail: "85h multi-speaker", modality: "Speech", badge: "Available" },
+  { label: "Amharic ASR", detail: "Capacity up to 120h", modality: "Speech", badge: "On-demand" },
+  { label: "Crop Disease CV", detail: "Capacity up to 10K images", modality: "Vision", badge: "On-demand" },
+  { label: "Multilingual RLHF", detail: "Capacity up to 20M tokens", modality: "Text", badge: "On-demand" },
 ];
 
 const fadeIn = {
