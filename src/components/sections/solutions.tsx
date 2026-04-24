@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronRight, ImagePlus, Mic2, Sparkles } from "lucide-react";
+import { ChevronRight, FileText, ImagePlus, Mic2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/src/components/animations/fade-in";
@@ -10,27 +10,30 @@ import { Section } from "@/src/components/sections/section";
 const solutions = [
   {
     icon: Mic2,
-    title: "Speech AI",
-    description: "ASR, TTS, keyword spotting, and call center audio for voice-enabled products.",
-    useCases: ["ASR", "TTS", "Keyword spotting", "Call center audio"],
-    modalities: ["Audio", "Transcripts", "Metadata"],
-    languages: ["Amharic", "Oromifa", "Tigrinya", "Somali", "Harari"],
+    title: "Voice datasets",
+    description:
+      "High-fidelity audio with speaker-diverse accents, time-aligned transcriptions, and speaker diarisation for ASR, TTS, IVR, and voice automation.",
+    useCases: ["Call-center ASR", "IVR", "Voice bots", "Speech search"],
+    modalities: ["Audio", "Transcripts", "Speaker labels"],
+    coverage: ["Banks", "Telecom", "Customer support", "Public services"],
   },
   {
     icon: ImagePlus,
-    title: "Computer Vision",
-    description: "Retail scenes, street environments, agriculture imagery, and document OCR.",
-    useCases: ["Retail scenes", "Street environments", "Agriculture imagery", "Document OCR"],
-    modalities: ["Images", "Video", "Annotations"],
-    languages: ["Amharic", "Oromifa", "Tigrinya"],
+    title: "Image datasets",
+    description:
+      "Domain-specific image collection and annotation with bounding boxes, segmentation, and classification for field conditions, shelves, forms, and operational scenes.",
+    useCases: ["Crop disease", "Shelf compliance", "ID parsing", "Damage detection"],
+    modalities: ["Images", "Bounding boxes", "Segmentation"],
+    coverage: ["Agriculture", "Retail", "Insurance", "Documents"],
   },
   {
-    icon: Sparkles,
-    title: "LLM Training Data",
-    description: "Multilingual corpora, instruction tuning, and RLHF preference data.",
-    useCases: ["Multilingual corpora", "Instruction tuning", "RLHF preference data"],
-    modalities: ["Text", "Pairs", "Rankings"],
-    languages: ["Amharic", "Oromifa", "Somali", "Tigrinya"],
+    icon: FileText,
+    title: "Text datasets",
+    description:
+      "Structured and unstructured text for NLP, search, and classification. Support tickets, legal clauses, product descriptions, and local-language corpora cleaned for model use.",
+    useCases: ["Support tickets", "Legal clauses", "Product text", "Search corpora"],
+    modalities: ["Text", "Structured fields", "Annotations"],
+    coverage: ["Commerce", "Law", "Service ops", "Internal search"],
   },
 ];
 
@@ -38,55 +41,63 @@ export function Solutions() {
   return (
     <Section
       id="solutions"
-      eyebrow="SOLUTIONS"
-      title="AI Training Data Solutions"
-      description="Secure dataset delivery pipelines for enterprise AI teams."
-      className="bg-[#111827]"
+      eyebrow="WHAT WE BUILD"
+      title="What we build"
+      description="Actual datasets built around the exact behavior your model needs to learn, not generic catalog items with generic claims."
+      className="bg-[#0E1723]"
     >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {solutions.map((solution) => (
+        {solutions.map((solution, index) => (
           <FadeIn key={solution.title}>
-            <div className="glass-card group flex h-full flex-col p-6 transition-all duration-300 hover:scale-[1.02] hover:border-primary/30">
-              <div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-primary/20">
-                <solution.icon className="size-5 text-primary" />
+            <div className="glass-card group flex h-full flex-col p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30">
+              <div className="mb-5 flex items-start justify-between gap-4">
+                <div className="flex size-11 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10">
+                  <solution.icon className="size-5 text-primary" />
+                </div>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#73849A]">
+                  0{index + 1}
+                </span>
               </div>
-              <h3 className="font-display text-lg font-semibold text-white">{solution.title}</h3>
-              <p className="mt-2 text-sm text-[#9CA3AF]">{solution.description}</p>
 
-              <div className="mt-6 space-y-4">
+              <h3 className="font-display text-xl font-semibold text-white">{solution.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-[#9FB0C4]">{solution.description}</p>
+
+              <div className="mt-6 space-y-5 border-t border-white/8 pt-5">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-primary/80">
-                    Use cases
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/90">
+                    Common asks
                   </p>
-                  <div className="mt-2 flex flex-wrap gap-2">
+                  <div className="mt-3 flex flex-wrap gap-2">
                     {solution.useCases.map((uc) => (
                       <span
                         key={uc}
-                        className="rounded-md border border-[#1F2937] bg-[#0F172A] px-2 py-1 font-mono text-xs text-[#D1D5DB]"
+                        className="rounded-full border border-white/8 bg-white/[0.03] px-2.5 py-1 font-mono text-[11px] text-[#D8E1EC]"
                       >
                         {uc}
                       </span>
                     ))}
                   </div>
                 </div>
+
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-primary/80">
-                    Modalities
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/90">
+                    Deliverables
                   </p>
-                  <p className="mt-1 text-sm text-[#D1D5DB]">{solution.modalities.join(", ")}</p>
+                  <p className="mt-2 text-sm text-[#D8E1EC]">{solution.modalities.join(", ")}</p>
                 </div>
+
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-primary/80">
-                    Languages
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/90">
+                    Usually for
                   </p>
-                  <p className="mt-1 text-sm text-[#D1D5DB]">{solution.languages.join(", ")}</p>
+                  <p className="mt-2 text-sm text-[#D8E1EC]">{solution.coverage.join(", ")}</p>
                 </div>
               </div>
 
               <div className="mt-auto pt-6">
                 <Button asChild variant="link" className="h-auto p-0 text-primary hover:text-primary/90">
-                  <Link href="/solutions" className="inline-flex items-center gap-1 text-sm font-medium">
-                    Learn more
+                  <Link href="/#pilot" className="inline-flex items-center gap-1 text-sm font-medium">
+                    Start with a pilot
                     <ChevronRight className="size-4 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </Button>

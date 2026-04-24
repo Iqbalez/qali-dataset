@@ -29,7 +29,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("py-20 md:py-28", className)}
+      className={cn("relative py-20 md:py-28", className)}
     >
       <FadeIn>
         <Container>

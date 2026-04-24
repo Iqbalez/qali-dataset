@@ -6,13 +6,19 @@ import { useRef } from "react";
 import { Container } from "@/src/components/layout/container";
 import { cn } from "@/lib/utils";
 
-const LOGO_COUNT = 5;
+const focusAreas = [
+  "Call-center audio",
+  "Farm imagery",
+  "KYC documents",
+  "Support tickets",
+  "IVR speech",
+];
 
 const trustBadges = [
-  "NDA available",
-  "Custom data collection",
-  "On-demand annotation",
-  "Secure delivery",
+  "Free pilot in 10 business days",
+  "Real local data",
+  "Mother-tongue review",
+  "Training-ready delivery",
 ];
 
 export function TrustBar() {
@@ -25,32 +31,34 @@ export function TrustBar() {
       initial={{ opacity: 0, y: 12 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="border-y border-[#1F2937] bg-[#111827] py-16 md:py-20"
+      className="border-y border-white/8 bg-[#0E1723] py-16 md:py-20"
     >
       <Container>
-        <p className="mb-8 text-center text-sm font-medium text-[#9CA3AF] sm:mb-10">
-          Trusted by AI teams building for Africa
+        <p className="mx-auto mb-8 max-w-4xl text-center text-sm font-medium leading-6 text-[#9FB0C4] sm:mb-10">
+          We build for markets where language, currency, regulation, and daily
+          behavior do not map cleanly to imported datasets.
         </p>
         <div
           className={cn(
-            "flex flex-wrap items-center justify-center gap-8",
-            "sm:gap-10 md:gap-12 lg:gap-16"
+            "flex flex-wrap items-center justify-center gap-4",
+            "sm:gap-5 md:gap-6"
           )}
         >
-          {Array.from({ length: LOGO_COUNT }).map((_, i) => (
+          {focusAreas.map((label, i) => (
             <motion.div
-              key={i}
+              key={label}
               initial={{ opacity: 0, y: 8 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
               transition={{ duration: 0.35, delay: 0.05 * i, ease: "easeOut" }}
-              className="flex h-12 w-24 shrink-0 items-center justify-center rounded-lg border border-[#1F2937] bg-[#0F172A] sm:h-14 sm:w-28 md:h-16 md:w-32"
-              aria-hidden
-            />
+              className="rounded-full border border-white/8 bg-white/[0.03] px-4 py-2 text-xs font-medium text-[#D8E1EC]"
+            >
+              {label}
+            </motion.div>
           ))}
         </div>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-t border-[#1F2937] pt-8">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-t border-white/8 pt-8">
           {trustBadges.map((badge) => (
-            <span key={badge} className="flex items-center gap-2 text-xs font-medium text-[#D1D5DB]">
+            <span key={badge} className="flex items-center gap-2 text-xs font-medium text-[#D8E1EC]">
               <span className="text-primary">&#10003;</span>
               {badge}
             </span>

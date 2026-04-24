@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,8 +18,8 @@ import { cn } from "@/lib/utils";
 import { Container } from "@/src/components/layout/container";
 
 const navLinks = [
-  { href: "/solutions", label: "Solutions" },
-  { href: "/#catalog", label: "Datasets" },
+  { href: "/solutions", label: "What We Build" },
+  { href: "/catalog", label: "How It Works" },
   { href: "/quality", label: "Quality" },
   { href: "/contributors", label: "Contributors" },
   { href: "/languages", label: "Languages" },
@@ -43,11 +43,12 @@ function NavLink({
     <Link
       href={href}
       onClick={onClick}
+      aria-current={isActive ? "page" : undefined}
       className={cn(
-        "relative text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm",
-        "after:absolute after:bottom-[-2px] after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-200",
+        "relative rounded-sm px-0.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "after:absolute after:bottom-[-6px] after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-200",
         "hover:text-white hover:after:scale-x-100",
-        isActive ? "text-white after:scale-x-100" : "text-[#9CA3AF]",
+        isActive ? "text-white after:scale-x-100" : "text-[#8FA0B5]",
         className
       )}
     >
@@ -78,23 +79,30 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", handleEscape);
   }, [mobileOpen]);
 
+  const normalizedPath = useMemo(() => pathname ?? "/", [pathname]);
+
+  function isLinkActive(href: string) {
+    if (href.startsWith("/#")) return normalizedPath === "/";
+    return normalizedPath === href;
+  }
+
   return (
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "border-b border-[#1F2937] bg-[#0B0F19] shadow-lg"
-          : "bg-[#0B0F19]/50 backdrop-blur-md"
+          ? "border-b border-white/8 bg-[#09111B]/92 shadow-[0_18px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+          : "bg-[#09111B]/68 backdrop-blur-xl"
       )}
     >
       <nav>
         <Container className="flex items-center justify-between gap-4 py-4">
-          <Link href="/" className="flex flex-col gap-0.5">
+          <Link href="/" className="flex flex-col gap-1">
             <span className="text-lg font-semibold tracking-tight text-white">
               Qali
             </span>
-            <span className="text-xs font-medium text-[#9CA3AF]">
-              African Multimodal AI Data
+            <span className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#8FA0B5]">
+              Local truth for AI systems
             </span>
           </Link>
 
@@ -104,17 +112,17 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 label={link.label}
-                isActive={pathname === link.href}
+                isActive={isLinkActive(link.href)}
               />
             ))}
             <Button asChild>
-              <Link href="/#request-sample">Request Sample</Link>
+              <Link href="/#pilot">Get Pilot</Link>
             </Button>
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
             <Button asChild size="sm">
-              <Link href="/#request-sample">Request Sample</Link>
+              <Link href="/#pilot">Get Pilot</Link>
             </Button>
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild>
@@ -129,7 +137,7 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-72 border-[#1F2937] bg-[#0F172A]"
+                className="w-72 border-white/10 bg-[#0D1825]"
               >
                 <SheetHeader>
                   <SheetTitle className="text-white">Menu</SheetTitle>
@@ -140,17 +148,17 @@ export function Navbar() {
                       key={link.href}
                       href={link.href}
                       label={link.label}
-                      isActive={pathname === link.href}
+                      isActive={isLinkActive(link.href)}
                       onClick={() => setMobileOpen(false)}
                       className="block py-2.5 text-base"
                     />
                   ))}
                   <Button asChild className="mt-4 w-full">
                     <Link
-                      href="/#request-sample"
+                      href="/#pilot"
                       onClick={() => setMobileOpen(false)}
                     >
-                      Request Sample
+                      Get Pilot
                     </Link>
                   </Button>
                 </nav>

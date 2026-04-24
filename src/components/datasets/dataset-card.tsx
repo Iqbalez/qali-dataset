@@ -121,7 +121,7 @@ export function DatasetCard({ dataset }: DatasetCardProps) {
         {/* Actions */}
         <div className="flex flex-col gap-3 pt-4 sm:flex-row">
           <Button asChild size="sm" className="w-full sm:w-auto">
-            <Link href={`/#request-sample?dataset=${dataset.id}`}>Request sample</Link>
+            <Link href={`/#pilot?dataset=${dataset.id}`}>Request pilot</Link>
           </Button>
           <Button asChild variant="outline" size="sm" className="w-full border-[#374151] text-[#D1D5DB] hover:bg-[#1E293B] sm:w-auto">
             <Link href="/contact">Discuss scope</Link>

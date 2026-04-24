@@ -1,0 +1,57 @@
+
+> qali-et@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.5:3000
+- Environments: .env.local
+
+✓ Starting...
+✓ Ready in 7.3s
+○ Compiling / ...
+ GET / 200 in 1718ms (compile: 69ms, render: 1649ms)
+ GET / 200 in 19.9s (compile: 14.0s, render: 5.9s)
+ GET / 200 in 5.3s (compile: 383ms, render: 4.9s)
+ GET / 200 in 3.3s (compile: 195ms, render: 3.1s)
+ GET / 200 in 1208ms (compile: 46ms, render: 1162ms)
+ GET /solutions 200 in 321ms (compile: 204ms, render: 117ms)
+ GET / 200 in 69ms (compile: 11ms, render: 58ms)
+ GET /solutions 200 in 88ms (compile: 9ms, render: 79ms)
+ GET / 200 in 57ms (compile: 7ms, render: 50ms)
+ GET /quality 200 in 381ms (compile: 343ms, render: 38ms)
+ GET /contributors 200 in 345ms (compile: 308ms, render: 37ms)
+ GET /languages 200 in 214ms (compile: 134ms, render: 80ms)
+ GET /contact 200 in 170ms (compile: 119ms, render: 51ms)
+ GET / 200 in 101ms (compile: 20ms, render: 81ms)
+ GET /contributors 200 in 40ms (compile: 7ms, render: 33ms)
+ GET /terms 200 in 928ms (compile: 876ms, render: 52ms)
+ GET /privacy 200 in 518ms (compile: 462ms, render: 56ms)
+ GET /languages 200 in 77ms (compile: 6ms, render: 71ms)
+ GET /quality 200 in 35ms (compile: 5ms, render: 30ms)
+ GET / 200 in 66ms (compile: 7ms, render: 59ms)
+ GET / 200 in 61ms (compile: 6ms, render: 55ms)
+ GET / 200 in 58ms (compile: 5ms, render: 53ms)
+ GET / 200 in 55ms (compile: 4ms, render: 50ms)
+ GET / 200 in 59ms (compile: 8ms, render: 51ms)
+ GET / 200 in 55ms (compile: 4ms, render: 51ms)
+ GET / 200 in 58ms (compile: 5ms, render: 54ms)
+ GET / 200 in 101ms (compile: 10ms, render: 91ms)
+ GET / 200 in 69ms (compile: 5ms, render: 64ms)
+ GET / 200 in 85ms (compile: 6ms, render: 78ms)
+ GET /contact 200 in 51ms (compile: 9ms, render: 42ms)
+ GET /contributors 200 in 35ms (compile: 7ms, render: 28ms)
+ GET /contact 200 in 38ms (compile: 5ms, render: 33ms)
+ GET /solutions 200 in 69ms (compile: 7ms, render: 63ms)
+ GET /contact 200 in 42ms (compile: 5ms, render: 36ms)
+ GET /privacy 200 in 50ms (compile: 8ms, render: 42ms)
+ GET /terms 200 in 51ms (compile: 7ms, render: 44ms)
+ GET /quality 200 in 37ms (compile: 8ms, render: 29ms)
+ GET / 200 in 61ms (compile: 6ms, render: 54ms)
+ GET / 200 in 61ms (compile: 6ms, render: 55ms)
+✓ Compiled in 1196ms
+✓ Compiled in 152ms
+✓ Compiled in 92ms
+✓ Compiled in 219ms
+✓ Compiled in 230ms
+[?25h

@@ -130,7 +130,7 @@ export default function SolutionsPage() {
         </div>
         <div className="mt-12 flex justify-center">
           <Button asChild>
-            <Link href="/#request-sample">Request Sample</Link>
+            <Link href="/#pilot">Request pilot dataset</Link>
           </Button>
         </div>
       </Section>

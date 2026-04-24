@@ -1,8 +1,7 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 
 import {
   Tooltip,
@@ -13,20 +12,29 @@ import { Section } from "@/src/components/sections/section";
 
 const steps = [
   {
-    label: "Define data requirements",
-    description: "We work with you to specify data requirements, annotation guidelines, and quality criteria for your project.",
+    label: "You tell us the goal.",
+    description:
+      "Chatbot for Amharic support? Voice assistant for an IVR? Crop disease detection from photos? We listen.",
   },
   {
-    label: "Recruit native speakers",
-    description: "Our network of certified native speakers is matched to your language and domain needs with ongoing calibration.",
+    label: "We deliver a pilot.",
+    description:
+      "A small, high-quality dataset that proves what is possible. No risk.",
   },
   {
-    label: "Multi-layer quality assurance",
-    description: "Every dataset passes annotator self-review, peer verification, and automated plus human spot-checks before delivery.",
+    label: "You train & test.",
+    description:
+      "See the accuracy jump when your model is fed local truth.",
   },
   {
-    label: "Secure dataset delivery",
-    description: "Data is delivered via secure channels with full documentation, licensing, and traceability.",
+    label: "We scale to full dataset.",
+    description:
+      "Custom volume, custom annotation, custom structure. On your timeline.",
+  },
+  {
+    label: "You integrate.",
+    description:
+      "Your AI goes live knowing your world. And we remain on standby for updates.",
   },
 ];
 
@@ -46,8 +54,8 @@ export function Workflow() {
   return (
     <Section
       eyebrow="WORKFLOW"
-      title="Our Workflow"
-      description="From specification to delivery."
+      title="Five steps. No mystery."
+      description="You bring the problem. We bring the local data operation."
       className="bg-[#111827]"
     >
       <div ref={ref}>
@@ -75,6 +83,7 @@ export function Workflow() {
                         type="button"
                         className="flex size-14 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-[#0B0F19] text-base font-semibold text-primary transition-colors hover:border-primary/80 hover:ring-2 hover:ring-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                         aria-label={`Step ${index + 1}: ${step.label}`}
+                        suppressHydrationWarning
                       >
                         {index + 1}
                       </button>
@@ -108,6 +117,7 @@ export function Workflow() {
                       type="button"
                       className="flex size-12 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-[#0B0F19] text-sm font-semibold text-primary transition-colors hover:border-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       aria-label={`Step ${index + 1}: ${step.label}`}
+                      suppressHydrationWarning
                     >
                       {index + 1}
                     </button>

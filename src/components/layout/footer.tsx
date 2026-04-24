@@ -6,10 +6,10 @@ const footerColumns = [
   {
     title: "Product",
     links: [
-      { href: "/solutions", label: "AI Training Solutions" },
-      { href: "/#catalog", label: "Dataset Catalog" },
-      { href: "/#request-sample", label: "Request Sample" },
-      { href: "/quality", label: "Quality & Methodology" },
+      { href: "/solutions", label: "What We Build" },
+      { href: "/#catalog", label: "How It Works" },
+      { href: "/#pilot", label: "Request Pilot" },
+      { href: "/quality", label: "Quality & Ethics" },
     ],
   },
   {
@@ -74,8 +74,8 @@ export function Footer() {
             <span>Addis Ababa, Ethiopia</span>
           </div>
           <div className="flex flex-wrap gap-6">
-            <Link href="/#request-sample" className="text-sm text-[#9CA3AF] hover:text-white">
-              Dataset Overview (PDF)
+            <Link href="/#pilot" className="text-sm text-[#9CA3AF] hover:text-white">
+              Request a pilot
             </Link>
             <Link href="/privacy" className="text-sm text-[#9CA3AF] hover:text-white">
               Privacy Policy
@@ -88,9 +88,9 @@ export function Footer() {
 
         <div className="mt-8 flex flex-col items-center gap-2 border-t border-[#1F2937] pt-8 text-center sm:flex-row sm:justify-between sm:text-left">
           <p className="text-sm text-[#9CA3AF]">
-            © {currentYear} Qali. All rights reserved.
+            (c) {currentYear} Qali. All rights reserved.
           </p>
-          <p className="text-sm text-[#9CA3AF]">Enterprise AI data for African languages</p>
+          <p className="text-sm text-[#9CA3AF]">Local truth for artificial intelligence.</p>
         </div>
       </Container>
     </footer>

@@ -163,7 +163,7 @@ export default function LanguagesPage() {
 
         <div className="mt-12 flex justify-center">
           <Button asChild>
-            <Link href="/#request-sample">Request language-specific sample</Link>
+            <Link href="/#pilot">Request pilot dataset</Link>
           </Button>
         </div>
       </Section>

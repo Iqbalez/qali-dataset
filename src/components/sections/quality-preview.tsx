@@ -9,14 +9,14 @@ export function QualityPreview() {
     <Section
       id="quality"
       eyebrow="QUALITY & ETHICS"
-      title="Enterprise-grade data validation pipeline"
-      description="How we ensure accuracy, representativeness, and ethical standards in every dataset."
+      title="Data you can stand behind."
+      description="We do not generate synthetic text or scrape without conscience. Every voice recording is transcribed and verified by mother-tongue speakers. Every image is annotated by people who live the context. Every text sample respects data privacy laws. This is data without legal landmines."
       className="bg-[#111827]"
     >
       <div className="flex flex-col items-center gap-8">
         <QADiagram />
         <Button asChild variant="outline" className="border-[#374151] text-[#E5E7EB] hover:bg-[#1E293B] hover:text-white">
-          <Link href="/quality">Our methodology</Link>
+          <Link href="/quality">See our review process</Link>
         </Button>
       </div>
     </Section>

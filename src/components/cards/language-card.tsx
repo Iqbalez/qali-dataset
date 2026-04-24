@@ -78,7 +78,7 @@ export function LanguageCard({
 
       <div className="mt-4 pt-2">
         <Button asChild size="sm" className="w-full sm:w-auto">
-          <Link href="/#request-sample">Request sample</Link>
+          <Link href="/#pilot">Request pilot</Link>
         </Button>
       </div>
     </div>

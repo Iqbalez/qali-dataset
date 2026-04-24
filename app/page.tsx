@@ -14,9 +14,9 @@ import { SampleRequestForm } from "@/src/components/forms/sample-request-form";
 import { Section } from "@/src/components/sections/section";
 
 export const metadata = createPageMetadata({
-  title: "African Language AI Data | Qali",
+  title: "Local AI Datasets | Qali",
   description:
-    "High quality African language datasets for LLMs, ASR, and RLHF.",
+    "Qali builds local voice, image, and text datasets so AI systems understand real African markets, languages, and contexts.",
 });
 
 export default function Home() {
@@ -33,10 +33,10 @@ export default function Home() {
       <Metrics />
       <CaseStudiesPreview />
       <Section
-        id="request-sample"
-        eyebrow="REQUEST SAMPLE"
-        title="Get Your Free Dataset Sample"
-        description="Fill out the form and we'll send you a sample of our African language data."
+        id="pilot"
+        eyebrow="FREE PILOT"
+        title="Request your free pilot dataset."
+        description="Tell us what AI problem you're solving, and we'll build a miniature dataset that proves our value. Delivered in 10 business days. No strings."
       >
         <div className="mx-auto max-w-2xl">
           <SampleRequestForm />

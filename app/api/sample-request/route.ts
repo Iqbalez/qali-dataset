@@ -53,9 +53,9 @@ export async function POST(request: Request) {
       from: "Qali <onboarding@resend.dev>",
       to: "iqbalezedin1@gmail.com",
       replyTo: email,
-      subject: `Sample request from ${name} (${company})`,
+      subject: `Pilot dataset request from ${name} (${company})`,
       html: `
-        <h2>New sample request</h2>
+        <h2>New pilot dataset request</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Company:</strong> ${company}</p>
@@ -79,10 +79,11 @@ export async function POST(request: Request) {
     await resend.emails.send({
       from: "Qali <onboarding@resend.dev>",
       to: email,
-      subject: "Dataset sample request received - Qali",
+      subject: "Pilot dataset request received - Qali",
       html: `
         <p>Hi ${name},</p>
-        <p>Thank you for requesting a dataset sample. We'll send your sample to this email within 24 hours.</p>
+        <p>Thank you for requesting a free pilot dataset.</p>
+        <p>We usually respond within one business day. If your use case is a fit, we will scope the pilot and deliver it within 10 business days.</p>
         <p>Best regards,<br>Qali Team</p>
       `,
     });
