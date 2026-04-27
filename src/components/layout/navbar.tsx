@@ -19,7 +19,7 @@ import { Container } from "@/src/components/layout/container";
 
 const navLinks = [
   { href: "/solutions", label: "What We Build" },
-  { href: "/catalog", label: "How It Works" },
+  { href: "/#catalog", label: "How It Works" },
   { href: "/quality", label: "Quality" },
   { href: "/contributors", label: "Contributors" },
   { href: "/languages", label: "Languages" },
@@ -61,6 +61,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hash, setHash] = useState("");
 
   useEffect(() => {
     function handleScroll() {
@@ -79,10 +80,21 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", handleEscape);
   }, [mobileOpen]);
 
+  useEffect(() => {
+    setHash(window.location.hash);
+    const handleHashChange = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
   const normalizedPath = useMemo(() => pathname ?? "/", [pathname]);
 
-  function isLinkActive(href: string) {
-    if (href.startsWith("/#")) return normalizedPath === "/";
+function isLinkActive(href: string) {
+    if (href.startsWith("/#")) {
+      // Example: turns "/#catalog" into "#catalog" and checks if it matches the current window hash
+      const targetHash = href.replace("/", ""); 
+      return normalizedPath === "/" && hash === targetHash;
+    }
     return normalizedPath === href;
   }
 
